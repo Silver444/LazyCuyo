@@ -1,0 +1,590 @@
+
+Action: file_editor create /app/index.html --file-text "<!DOCTYPE html>
+<html lang=\"es\">
+<head>
+  <meta charset=\"UTF-8\" />
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
+  <meta name=\"description\" content=\"LazyCuyo — Consultoría tecnológica especializada en integrar WhatsApp, Facebook Messenger y otros canales en plataformas omnicanal como Chatwoot.\" />
+  <title>LazyCuyo · Consultoría en Atención al Cliente Omnicanal</title>
+  <style>
+    /* ---------- Reset & Base ---------- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-900: #0a2540;
+      --blue-700: #1554c0;
+      --blue-600: #1e6bf1;
+      --blue-500: #3b82f6;
+      --blue-100: #e6efff;
+      --blue-50:  #f2f7ff;
+      --white:    #ffffff;
+      --gray-900: #0f172a;
+      --gray-700: #334155;
+      --gray-500: #64748b;
+      --gray-200: #e2e8f0;
+      --gray-100: #f1f5f9;
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 10px 25px -10px rgba(21, 84, 192, 0.25);
+      --radius: 14px;
+      --max-w: 1140px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif;
+      color: var(--gray-900);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: var(--blue-700); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ---------- Header / Nav ---------- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      color: var(--blue-900);
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
+    }
+    .brand-mark {
+      width: 34px; height: 34px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--blue-600), var(--blue-900));
+      display: inline-flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 800; font-size: 0.95rem;
+      box-shadow: var(--shadow-md);
+    }
+    .nav-links {
+      display: flex; gap: 28px; list-style: none;
+    }
+    .nav-links a {
+      color: var(--gray-700);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover { color: var(--blue-700); text-decoration: none; }
+    .nav-cta {
+      display: inline-block;
+      padding: 10px 18px;
+      background: var(--blue-700);
+      color: var(--white);
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+    .nav-cta:hover { background: var(--blue-900); text-decoration: none; transform: translateY(-1px); }
+
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      padding: 96px 0 88px;
+      background:
+        radial-gradient(1000px 500px at 80% -10%, rgba(30,107,241,0.12), transparent 60%),
+        linear-gradient(180deg, var(--blue-50) 0%, var(--white) 100%);
+      overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 12px;
+      background: var(--blue-100);
+      color: var(--blue-700);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 4.4vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--blue-900);
+      margin-bottom: 18px;
+    }
+    .hero h1 span { color: var(--blue-700); }
+    .hero p.lead {
+      font-size: 1.1rem;
+      color: var(--gray-700);
+      max-width: 56ch;
+      margin-bottom: 32px;
+    }
+    .hero-actions {
+      display: flex; gap: 14px; flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.98rem;
+      transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--blue-700);
+      color: var(--white);
+      box-shadow: var(--shadow-md);
+    }
+    .btn-primary:hover { background: var(--blue-900); text-decoration: none; transform: translateY(-2px); }
+    .btn-secondary {
+      background: var(--white);
+      color: var(--blue-700);
+      border-color: var(--blue-100);
+    }
+    .btn-secondary:hover { background: var(--blue-50); text-decoration: none; }
+
+    /* Hero visual */
+    .hero-card {
+      background: var(--white);
+      border-radius: 18px;
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 20px 60px -20px rgba(10, 37, 64, 0.25);
+      padding: 22px;
+    }
+    .hero-card-header {
+      display: flex; align-items: center; gap: 10px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--gray-100);
+      margin-bottom: 14px;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot.r { background: #ff5f57; }
+    .dot.y { background: #febc2e; }
+    .dot.g { background: #28c840; }
+    .channels {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .channel {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 14px;
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      background: var(--white);
+      font-size: 0.92rem;
+      color: var(--gray-700);
+    }
+    .channel .badge {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: var(--blue-100); color: var(--blue-700);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.85rem;
+    }
+    .channel strong { color: var(--blue-900); display: block; font-size: 0.95rem; }
+
+    @media (max-width: 900px) {
+      .hero { padding: 64px 0 56px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* ---------- Sections ---------- */
+    section { padding: 88px 0; }
+    .section-header { max-width: 720px; margin: 0 auto 56px; text-align: center; }
+    .section-header h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--blue-900);
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .section-header p {
+      color: var(--gray-700);
+      font-size: 1.05rem;
+    }
+
+    /* About */
+    .about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .about p {
+      color: var(--gray-700);
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+    }
+    .about ul {
+      list-style: none;
+      margin-top: 8px;
+    }
+    .about ul li {
+      position: relative;
+      padding-left: 28px;
+      color: var(--gray-700);
+      margin-bottom: 10px;
+    }
+    .about ul li::before {
+      content: \"\";
+      position: absolute;
+      left: 0; top: 8px;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: var(--blue-100);
+      box-shadow: inset 0 0 0 4px var(--blue-600);
+    }
+    .stat-card {
+      background: linear-gradient(160deg, var(--blue-700), var(--blue-900));
+      color: var(--white);
+      border-radius: 18px;
+      padding: 36px;
+      box-shadow: 0 25px 60px -20px rgba(10, 37, 64, 0.45);
+    }
+    .stat-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .stat-row .stat strong {
+      display: block;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .stat-row .stat span {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 36px; }
+    }
+
+    /* Services */
+    .services { background: var(--blue-50); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 30px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -20px rgba(21, 84, 192, 0.25);
+      border-color: var(--blue-100);
+    }
+    .service-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      background: var(--blue-100);
+      color: var(--blue-700);
+      display: inline-flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+    }
+    .service-card h3 {
+      font-size: 1.15rem;
+      color: var(--blue-900);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+    .service-card p {
+      color: var(--gray-700);
+      font-size: 0.98rem;
+    }
+
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Contact */
+    .contact { background: var(--white); }
+    .contact-card {
+      max-width: 760px;
+      margin: 0 auto;
+      background: linear-gradient(160deg, var(--blue-700), var(--blue-900));
+      color: var(--white);
+      border-radius: 22px;
+      padding: 56px;
+      text-align: center;
+      box-shadow: 0 30px 70px -25px rgba(10, 37, 64, 0.5);
+    }
+    .contact-card h2 {
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
+    .contact-card p {
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 28px;
+      font-size: 1.05rem;
+    }
+    .contact-email {
+      display: inline-block;
+      padding: 16px 28px;
+      background: var(--white);
+      color: var(--blue-900);
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+    .contact-email:hover { background: var(--blue-50); transform: translateY(-2px); text-decoration: none; }
+    .contact-note {
+      margin-top: 22px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 720px) {
+      .contact-card { padding: 40px 24px; }
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--blue-900);
+      color: rgba(255,255,255,0.75);
+      padding: 36px 0;
+      text-align: center;
+      font-size: 0.92rem;
+    }
+    .site-footer .brand { color: #fff; justify-content: center; margin-bottom: 8px; }
+    .site-footer .brand-mark { box-shadow: none; }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class=\"site-header\">
+    <div class=\"container nav\">
+      <a href=\"#inicio\" class=\"brand\" aria-label=\"LazyCuyo - Inicio\">
+        <span class=\"brand-mark\">LC</span>
+        LazyCuyo
+      </a>
+      <nav aria-label=\"Navegación principal\">
+        <ul class=\"nav-links\">
+          <li><a href=\"#nosotros\">Nosotros</a></li>
+          <li><a href=\"#servicios\">Servicios</a></li>
+          <li><a href=\"#contacto\">Contacto</a></li>
+        </ul>
+      </nav>
+      <a href=\"#contacto\" class=\"nav-cta\">Hablemos</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class=\"hero\" id=\"inicio\">
+    <div class=\"container hero-grid\">
+      <div>
+        <span class=\"eyebrow\">Atención al cliente omnicanal</span>
+        <h1>Conecta WhatsApp, Messenger y más en <span>una sola plataforma</span></h1>
+        <p class=\"lead\">
+          En LazyCuyo ayudamos a empresas como la tuya a integrar canales de mensajería y centralizar
+          la atención al cliente con herramientas como Chatwoot. Más conversaciones organizadas,
+          equipos más eficientes y clientes más felices.
+        </p>
+        <div class=\"hero-actions\">
+          <a href=\"#contacto\" class=\"btn btn-primary\">Solicita una asesoría</a>
+          <a href=\"#servicios\" class=\"btn btn-secondary\">Ver servicios</a>
+        </div>
+      </div>
+
+      <div class=\"hero-card\" aria-hidden=\"true\">
+        <div class=\"hero-card-header\">
+          <span class=\"dot r\"></span><span class=\"dot y\"></span><span class=\"dot g\"></span>
+          <span style=\"margin-left:auto; font-size:0.85rem; color:var(--gray-500);\">Bandeja unificada</span>
+        </div>
+        <div class=\"channels\">
+          <div class=\"channel\">
+            <span class=\"badge\">WA</span>
+            <span><strong>WhatsApp</strong>3 nuevos mensajes</span>
+          </div>
+          <div class=\"channel\">
+            <span class=\"badge\">FB</span>
+            <span><strong>Messenger</strong>1 conversación activa</span>
+          </div>
+          <div class=\"channel\">
+            <span class=\"badge\">IG</span>
+            <span><strong>Instagram</strong>2 mensajes directos</span>
+          </div>
+          <div class=\"channel\">
+            <span class=\"badge\">@</span>
+            <span><strong>Email & Web</strong>Chat en vivo activo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class=\"about\" id=\"nosotros\">
+    <div class=\"container\">
+      <div class=\"section-header\">
+        <h2>Sobre nosotros</h2>
+        <p>Somos una consultora tecnológica enfocada en soluciones de atención al cliente.</p>
+      </div>
+      <div class=\"about-grid\">
+        <div>
+          <p>
+            En <strong>LazyCuyo</strong> ayudamos a pequeñas y medianas empresas a implementar soluciones
+            omnicanal de atención al cliente. Diseñamos, configuramos y mantenemos plataformas que unifican
+            todos tus canales de comunicación —WhatsApp, Facebook Messenger, Instagram, correo electrónico
+            y chat web— en un mismo lugar.
+          </p>
+          <p>
+            Trabajamos con tecnologías de código abierto como <strong>Chatwoot</strong>, adaptándolas a la
+            realidad de cada negocio para que tu equipo pueda responder más rápido, ofrecer un servicio
+            consistente y entender mejor a tus clientes.
+          </p>
+          <ul>
+            <li>Enfoque cercano y orientado a resultados</li>
+            <li>Implementaciones a la medida de cada negocio</li>
+            <li>Acompañamiento técnico continuo</li>
+          </ul>
+        </div>
+        <div class=\"stat-card\">
+          <h3>Atención conectada de extremo a extremo</h3>
+          <p style=\"color: rgba(255,255,255,0.85);\">
+            Unificamos canales, automatizamos flujos y capacitamos a tu equipo para que ningún mensaje
+            de tus clientes quede sin respuesta.
+          </p>
+          <div class=\"stat-row\">
+            <div class=\"stat\"><strong>+5</strong><span>Canales integrables</span></div>
+            <div class=\"stat\"><strong>24/7</strong><span>Soporte disponible</span></div>
+            <div class=\"stat\"><strong>100%</strong><span>Personalizado</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class=\"services\" id=\"servicios\">
+    <div class=\"container\">
+      <div class=\"section-header\">
+        <h2>Nuestros servicios</h2>
+        <p>Soluciones prácticas para que tu equipo de atención trabaje mejor, sin complicaciones técnicas.</p>
+      </div>
+
+      <div class=\"services-grid\">
+        <article class=\"service-card\">
+          <div class=\"service-icon\" aria-hidden=\"true\">
+            <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">
+              <path d=\"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\"/>
+            </svg>
+          </div>
+          <h3>Integración de canales de mensajería</h3>
+          <p>
+            Conectamos WhatsApp, Facebook Messenger, Instagram, Telegram, correo electrónico y chat web
+            a una sola plataforma de atención, configurada y lista para usar.
+          </p>
+        </article>
+
+        <article class=\"service-card\">
+          <div class=\"service-icon\" aria-hidden=\"true\">
+            <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">
+              <circle cx=\"12\" cy=\"12\" r=\"3\"/>
+              <path d=\"M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z\"/>
+            </svg>
+          </div>
+          <h3>Implementación de plataformas de atención</h3>
+          <p>
+            Instalamos, configuramos y personalizamos plataformas como Chatwoot adaptadas a los flujos
+            de trabajo, roles y procesos de tu empresa.
+          </p>
+        </article>
+
+        <article class=\"service-card\">
+          <div class=\"service-icon\" aria-hidden=\"true\">
+            <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">
+              <path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"/>
+              <polyline points=\"22 4 12 14.01 9 11.01\"/>
+            </svg>
+          </div>
+          <h3>Soporte técnico continuo</h3>
+          <p>
+            Te acompañamos después de la implementación con mantenimiento, mejoras, capacitación de tu
+            equipo y resolución ágil de cualquier incidencia técnica.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class=\"contact\" id=\"contacto\">
+    <div class=\"container\">
+      <div class=\"contact-card\">
+        <h2>¿Listo para mejorar tu atención al cliente?</h2>
+        <p>
+          Cuéntanos sobre tu negocio y te ayudaremos a diseñar una solución a la medida.
+          Escríbenos y recibirás respuesta lo antes posible.
+        </p>
+        <a class=\"contact-email\" href=\"mailto:contacto@tudominio.com\">contacto@tudominio.com</a>
+        <p class=\"contact-note\">Atendemos a pequeñas y medianas empresas en Latinoamérica y el resto del mundo hispanohablante.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class=\"site-footer\">
+    <div class=\"container\">
+      <div class=\"brand\">
+        <span class=\"brand-mark\">LC</span>
+        LazyCuyo
+      </div>
+      <p>&copy; 2025 LazyCuyo. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
+"
+Observation: Create successful: /app/index.html
