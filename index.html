@@ -57,8 +57,9 @@
       border-bottom: 1px solid var(--gray-200);
     }
     .brand img {
-    width: 34px;
-    height: 34px;
+    width: min(100%, 420px);
+    height: auto;
+    display: block;
     }
     .nav {
       display: flex;
@@ -408,7 +409,7 @@
   <header class="site-header">
     <div class="container nav">
       <a href="#inicio" class="brand" aria-label="LazyCuyo - Inicio">
-        <img src="logo.png" alt="LazyCuyo">
+        <img src="logo.svg" alt="LazyCuyo">
         LazyCuyo
       </a>
       <nav aria-label="Navegación principal">
@@ -580,7 +581,7 @@ Atención continua. Más citas confirmadas. Menos tiempo respondiendo mensajes.
   <footer class="site-footer">
     <div class="container">
       <div class="brand">
-        <img src="logo.png" alt="LazyCuyo">
+        <img src="logo.svg" alt="LazyCuyo">
         LazyCuyo
       </div>
       <p>&copy; 2025 LazyCuyo. Todos los derechos reservados.</p>
